@@ -123,7 +123,7 @@ Authorization: Basic _System:ISCDEMO
 Accept: */*
 content-type: application/fhir+json
 Accept-Encoding: gzip, deflate, br
-Prefer: return=minimal
+Prefer: return=representation
 
 {
     "resourceType": "Patient",
@@ -132,6 +132,345 @@ Prefer: return=minimal
       {
         "system": "http://hospital.example.org/mrn",
         "value": "987654",
+        "use": "usual"
+      }
+    ],
+    "active": true,
+    "maritalStatus": {
+      "coding": [
+        {
+          "code": "M",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "display": "Married"
+        }
+      ]
+    },
+    "address": [
+      {
+        "text": "1234 Elm Street, Springfield, IL 62704 USA",
+        "use": "home",
+        "type": "both",
+        "line": [
+          "1234 Elm Street"
+        ],
+        "city": "Springfield",
+        "state": "IL",
+        "postalCode": "62704",
+        "country": "USA"
+      }
+    ],
+    "contact": [
+      {
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1 (217) 555-7890",
+            "use": "home"
+          }
+        ]
+      },
+      {
+        "telecom": [
+          {
+            "system": "email",
+            "value": "johndoe@example.com",
+            "use": "home"
+          }
+        ]
+      }
+    ],
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "code": "en",
+              "system": "urn:ietf:bcp:47",
+              "display": "English"
+            }
+          ]
+        },
+        "preferred": true
+      }
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-Race",
+              "code": "2106-3",
+              "display": "White"
+            }
+          ]
+        }
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-Ethnicity",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            }
+          ]
+        }
+      }
+    ],
+    "generalPractitioner": [
+      {
+        "reference": "Practitioner/cfsb1739628662026"
+      }
+    ]
+}
+###
+
+
+POST http://fhir.cloudintersystems.com/csp/healthshare/demo/fhir/r4/Patient
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+
+{
+    "resourceType": "Patient",
+    "id": "cfsb1739559272444",
+    "identifier": [
+      {
+        "system": "http://hospital.example.org/mrn",
+        "value": "987654",
+        "use": "usual"
+      }
+    ],
+    "active": true,
+    "maritalStatus": {
+      "coding": [
+        {
+          "code": "M",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "display": "Married"
+        }
+      ]
+    },
+    "address": [
+      {
+        "text": "1234 Elm Street, Springfield, IL 62704 USA",
+        "use": "home",
+        "type": "both",
+        "line": [
+          "1234 Elm Street"
+        ],
+        "city": "Springfield",
+        "state": "IL",
+        "postalCode": "62704",
+        "country": "USA"
+      }
+    ],
+    "contact": [
+      {
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1 (217) 555-7890",
+            "use": "home"
+          }
+        ]
+      },
+      {
+        "telecom": [
+          {
+            "system": "email",
+            "value": "johndoe@example.com",
+            "use": "home"
+          }
+        ]
+      }
+    ],
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "code": "en",
+              "system": "urn:ietf:bcp:47",
+              "display": "English"
+            }
+          ]
+        },
+        "preferred": true
+      }
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-Race",
+              "code": "2106-3",
+              "display": "White"
+            }
+          ]
+        }
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-Ethnicity",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            }
+          ]
+        }
+      }
+    ],
+    "generalPractitioner": [
+      {
+        "reference": "Practitioner/cfsb1739628662026"
+      }
+    ]
+}
+###
+POST http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+If-None-Exist: identifier=http://hospital.example.org/mrn|987655
+
+{
+    "resourceType": "Patient",
+    "id": "cfsb1739559272444",
+    "identifier": [
+      {
+        "system": "http://hospital.example.org/mrn",
+        "value": "987655",
+        "use": "usual"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "text": "John A. Doe",
+        "given": [
+          "John",
+          "A"
+        ],
+        "family": "Doe",
+        "use": "official"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "code": "M",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "display": "Married"
+        }
+      ]
+    },
+    "address": [
+      {
+        "text": "1234 Elm Street, Springfield, IL 62704 USA",
+        "use": "home",
+        "type": "both",
+        "line": [
+          "1234 Elm Stree"
+        ],
+        "city": "Springfield",
+        "state": "IL",
+        "postalCode": "62704",
+        "country": "USA"
+      }
+    ],
+    "contact": [
+      {
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1 (217) 555-7890",
+            "use": "home"
+          }
+        ]
+      },
+      {
+        "telecom": [
+          {
+            "system": "email",
+            "value": "johndoe@example.com",
+            "use": "home"
+          }
+        ]
+      }
+    ],
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "code": "en",
+              "system": "urn:ietf:bcp:47",
+              "display": "English"
+            }
+          ]
+        },
+        "preferred": true
+      }
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-Race",
+              "code": "2106-3",
+              "display": "White"
+            }
+          ]
+        }
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-Ethnicity",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            }
+          ]
+        }
+      }
+    ],
+    "generalPractitioner": [
+      {
+        "reference": "Practitioner/cfsb1739628662026"
+      }
+    ]
+}
+###
+POST http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+If-None-Exist: name=John
+
+{
+    "resourceType": "Patient",
+    "id": "cfsb1739559272444",
+    "identifier": [
+      {
+        "system": "http://hospital.example.org/mrn",
+        "value": "987655",
         "use": "usual"
       }
     ],

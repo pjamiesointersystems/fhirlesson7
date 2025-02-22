@@ -1,0 +1,34 @@
+DELETE http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient/cfsb1739559272444
+Authorization: Basic _System:ISCDEMO
+Accept: application/fhir+json
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+
+###
+DELETE http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?identifier=http://hospital.example.org/mrn|987654 
+Authorization: Basic _System:ISCDEMO
+Accept: application/fhir+json
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+If-Match: W/"1"
+Prefer: return=representation
+
+###
+
+DELETE http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?identifier=http://hospital.example.org/mrn|987654 
+Authorization: Basic _System:ISCDEMO
+Accept: application/fhir+json
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+
+###
+
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient/70109/_history/1
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=OperationOutcome
+###
