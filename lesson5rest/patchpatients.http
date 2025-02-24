@@ -133,7 +133,7 @@ Prefer: return=representation
   {
     "op": "replace",
     "path": "/name/0/family",
-    "value": "Doe-Smith"
+    "value": "Smithy"
   },
   {
     "op": "add",
@@ -151,7 +151,7 @@ Prefer: return=representation
 ]
 
 ###
-PATCH http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?_id=cfsb1739559272444
+PATCH http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient/cfsb1739559272444
 Authorization: Basic _System:ISCDEMO
 Accept: application/fhir+json
 content-type: application/json-patch+json
@@ -160,27 +160,11 @@ Prefer: return=representation
 
 [
   {
-    "op": "replace",
-    "path": "/active",
-    "value": false
-  },
-  {
-    "op": "replace",
-    "path": "/name/0/family",
-    "value": "Doe-Smith"
-  },
-  {
-    "op": "add",
-    "path": "/contact/2",
-    "value": {
-      "telecom": [
-        {
-          "system": "phone",
-          "value": "+1 (217) 555-0000",
-          "use": "mobile"
-        }
-      ]
-    }
+    "op": "move",
+    "from": "/contact/2",
+    "path": "/contact/0" 
   }
+  
 ]
 
+###

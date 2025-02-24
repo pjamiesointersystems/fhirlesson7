@@ -237,7 +237,7 @@ Accept: */*
 content-type: application/fhir+json
 Accept-Encoding: gzip, deflate, br
 Prefer: return=representation
-If-Match: W/"19"
+If-Match: W/"27"
 
 {
     "resourceType": "Patient",
@@ -471,7 +471,7 @@ Prefer: return=representation
     ]
 }
 ###
-PUT http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?_id=270082
+PUT http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?_id=70110
 Authorization: Basic _System:ISCDEMO
 Accept: */*
 content-type: application/fhir+json
@@ -480,7 +480,7 @@ Prefer: return=representation
 
 {
     "resourceType": "Patient",
-    "id": "70082",
+    "id": "cfsb1739559272444",
     "identifier": [
       {
         "system": "http://hospital.example.org/mrn",
@@ -591,5 +591,124 @@ Prefer: return=representation
 }
 ###
 
+PUT http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?_id=99998
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+
+{
+    "resourceType": "Patient",
+    "id": "99998",
+    "identifier": [
+      {
+        "system": "http://hospital.example.org/mrn",
+        "value": "987654",
+        "use": "usual"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "text": "John A. Doe",
+        "given": [
+          "Johnathan",
+          "A"
+        ],
+        "family": "Doe",
+        "use": "official"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "code": "M",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "display": "Married"
+        }
+      ]
+    },
+    "address": [
+      {
+        "text": "1234 Elm Street, Springfield, IL 62704 USA",
+        "use": "home",
+        "type": "both",
+        "line": [
+          "1234 Elm Stree"
+        ],
+        "city": "Springfield",
+        "state": "IL",
+        "postalCode": "62704",
+        "country": "USA"
+      }
+    ],
+    "contact": [
+      {
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1 (217) 555-7890",
+            "use": "home"
+          }
+        ]
+      },
+      {
+        "telecom": [
+          {
+            "system": "email",
+            "value": "johndoe@example.com",
+            "use": "home"
+          }
+        ]
+      }
+    ],
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "code": "en",
+              "system": "urn:ietf:bcp:47",
+              "display": "English"
+            }
+          ]
+        },
+        "preferred": true
+      }
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-Race",
+              "code": "2106-3",
+              "display": "White"
+            }
+          ]
+        }
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-Ethnicity",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            }
+          ]
+        }
+      }
+    ],
+    "generalPractitioner": [
+      {
+        "reference": "Practitioner/cfsb1739628662026"
+      }
+    ]
+}
+###
 
 
